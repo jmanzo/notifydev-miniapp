@@ -8,17 +8,24 @@ class Event extends Model
 {
 
     protected $fillable = [
-        'provider_id', 
+        'provider_id',
         'status', 
         'sg_event_id', 
-        'sg_message_id', 
-        'email', 'send_at', 
-        'event', 'asm_group_id', 
+        'sg_message_id',
+        'response', 
+        'email',
+        'smtp-id', 
+        'send_at', 
+        'event', 
+        'asm_group_id', 
         'reason', 
         'type', 
         'ip', 
         'tls', 
-        'cert_err'
+        'cert_err',
+        'useragent',
+        'url',
+        'attempt'
     ];
 
     public function provider()

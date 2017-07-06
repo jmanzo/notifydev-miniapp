@@ -22,7 +22,7 @@ class SendgridController extends Controller
     private function createBounce ($data)
     {
     	$event = Event::create([
-    		'provider_id' 	=> 1, // Only for test concept...
+    		'provider_id' 	=> 1,
     		'status'		=> $data['status'],
     		'sg_event_id' 	=> $data['sg_event_id'],
     		'sg_message_id' => $data['sg_message_id'],
@@ -41,11 +41,175 @@ class SendgridController extends Controller
     		'value'		=> $data['unique_arg_key']
     	]);
     	$category = Category::create([
-	    		'event_id' 	=> $event->id,
-	    		'name'		=> $value
-	    	]);
-    	}
-    	return true;
+	    	'event_id' 	=> $event->id,
+	    	'name'		=> $data['category']
+	   	]);
+    }
+
+    private function createClick ($data)
+    {
+    	$event = Event::create([
+    		'provider_id' 	=> 1,
+    		'sg_event_id' 	=> $data['sg_event_id'],
+    		'sg_message_id' => $data['sg_message_id'],
+    		'useragent'		=> $data['useragent'],
+    		'email' 		=> $data['email'],
+    		'event'			=> $data['event'],
+    		'asm_group_id'	=> $data['asm_group_id'],
+    		'ip'			=> $data['ip'],
+    		'url'			=> $data['url']
+    	]);
+    	$argument = Argument::create([
+    		'event_id' 	=> $event->id,
+    		'field'		=> 'unique_arg_key',
+    		'value'		=> $data['unique_arg_key']
+    	]);
+    	$category = Category::create([
+	    	'event_id' 	=> $event->id,
+	    	'name'		=> $data['category']
+	   	]);
+    }
+
+    private function createDeferred ($data)
+    {
+    	$event = Event::create([
+    		'provider_id' 	=> 1,
+    		'response'		=> $data['response'],
+    		'sg_event_id' 	=> $data['sg_event_id'],
+    		'sg_message_id' => $data['sg_message_id'],
+    		'email' 		=> $data['email'],
+    		'event'			=> $data['event'],
+    		'smtp-id'		=> $data['smtp-id'],
+    		'attempt'		=> $data['attempt'],
+    		'asm_group_id'	=> $data['asm_group_id'],
+    		'ip'			=> $data['ip'],
+    		'tls'			=> $data['tls'],
+    		'cert_err'		=> $data['cert_err']
+    	]);
+    	$argument = Argument::create([
+    		'event_id' 	=> $event->id,
+    		'field'		=> 'unique_arg_key',
+    		'value'		=> $data['unique_arg_key']
+    	]);
+    	$category = Category::create([
+	    	'event_id' 	=> $event->id,
+	    	'name'		=> $data['category']
+	   	]);
+    }
+
+    private function createDelivered ($data)
+    {
+    	$event = Event::create([
+    		'provider_id' 	=> 1,
+    		'response'		=> $data['response'],
+    		'sg_event_id' 	=> $data['sg_event_id'],
+    		'sg_message_id' => $data['sg_message_id'],
+    		'email' 		=> $data['email'],
+    		'event'			=> $data['event'],
+    		'smtp-id'		=> $data['smtp-id'],
+    		'asm_group_id'	=> $data['asm_group_id'],
+    		'ip'			=> $data['ip'],
+    		'tls'			=> $data['tls'],
+    		'cert_err'		=> $data['cert_err']
+    	]);
+    	$argument = Argument::create([
+    		'event_id' 	=> $event->id,
+    		'field'		=> 'unique_arg_key',
+    		'value'		=> $data['unique_arg_key']
+    	]);
+    	$category = Category::create([
+	    	'event_id' 	=> $event->id,
+	    	'name'		=> $data['category']
+	   	]);
+    }
+
+    private function createDropped ($data)
+    {
+    	$event = Event::create([
+    		'provider_id' 	=> 1,
+    		'sg_event_id' 	=> $data['sg_event_id'],
+    		'sg_message_id' => $data['sg_message_id'],
+    		'email' 		=> $data['email'],
+    		'event'			=> $data['event'],
+    		'smtp-id'		=> $data['smtp-id'],
+    		'reason'		=> $data['reason']
+    	]);
+    	$argument = Argument::create([
+    		'event_id' 	=> $event->id,
+    		'field'		=> 'unique_arg_key',
+    		'value'		=> $data['unique_arg_key']
+    	]);
+    	$category = Category::create([
+	    	'event_id' 	=> $event->id,
+	    	'name'		=> $data['category']
+	   	]);
+    }
+
+    private function createOpen ($data)
+    {
+    	$event = Event::create([
+    		'provider_id' 	=> 1,
+    		'sg_event_id' 	=> $data['sg_event_id'],
+    		'sg_message_id' => $data['sg_message_id'],
+    		'email' 		=> $data['email'],
+    		'ip'			=> $data['ip'],
+    		'useragent'		=> $data['useragent'],
+    		'event'			=> $data['event'],
+    		'smtp-id'		=> $data['smtp-id']
+    	]);
+    	$argument = Argument::create([
+    		'event_id' 	=> $event->id,
+    		'field'		=> 'unique_arg_key',
+    		'value'		=> $data['unique_arg_key']
+    	]);
+    	$category = Category::create([
+	    	'event_id' 	=> $event->id,
+	    	'name'		=> $data['category']
+	   	]);
+    }
+
+    private function createProcessed ($data)
+    {
+    	$event = Event::create([
+    		'provider_id' 	=> 1,
+    		'sg_event_id' 	=> $data['sg_event_id'],
+    		'sg_message_id' => $data['sg_message_id'],
+    		'email' 		=> $data['email'],
+    		'useragent'		=> $data['useragent'],
+    		'event'			=> $data['event'],
+    		'smtp-id'		=> $data['smtp-id'],
+    		'asm_group_id'	=> $data['asm_group_id']
+    	]);
+    	$argument = Argument::create([
+    		'event_id' 	=> $event->id,
+    		'field'		=> 'unique_arg_key',
+    		'value'		=> $data['unique_arg_key']
+    	]);
+    	$category = Category::create([
+	    	'event_id' 	=> $event->id,
+	    	'name'		=> $data['category']
+	   	]);
+    }
+
+    private function createSpamReport ($data)
+    {
+    	$event = Event::create([
+    		'provider_id' 	=> 1,
+    		'sg_event_id' 	=> $data['sg_event_id'],
+    		'sg_message_id' => $data['sg_message_id'],
+    		'email' 		=> $data['email'],
+    		'event'			=> $data['event'],
+    		'asm_group_id'	=> $data['asm_group_id']
+    	]);
+    	$argument = Argument::create([
+    		'event_id' 	=> $event->id,
+    		'field'		=> 'unique_arg_key',
+    		'value'		=> $data['unique_arg_key']
+    	]);
+    	$category = Category::create([
+	    	'event_id' 	=> $event->id,
+	    	'name'		=> $data['category']
+	   	]);
     }
 
     private function createEvent ($data)
@@ -55,37 +219,37 @@ class SendgridController extends Controller
     			$this->createBounce($data);
     			break;
 
-    		/*case 'click':
-    			# code...
+    		case 'click':
+    			$this->createClick($data);
     			break;
 
     		case 'deferred':
-    			# code...
+    			$this->createDeferred($data);
     			break;
 
     		case 'delivered':
-    			# code...
+    			$this->createDelivered($data);
     			break;
 
     		case 'dropped':
-    			# code...
+    			$this->createDropped($data);
     			break;
 
     		case 'open':
-    			# code...
+    			$this->createOpen($data);
     			break;
 
     		case 'processed':
-    			# code...
+    			$this->createProcessed($data);
     			break;
 
     		case 'spamreport':
-    			# code...
-    			break;*/
-    		
-    		default:
-    			abort(500);
+    			$this->createSpamReport($data);
     			break;
+    		
+    		/*default:
+    			abort(500);
+    			break;*/
     	}
     }
 }
