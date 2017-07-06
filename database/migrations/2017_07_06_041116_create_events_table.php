@@ -19,39 +19,39 @@ class CreateEventsTable extends Migration
             $table->integer('provider_id')->unsigned();
             $table->foreign('provider_id')->references('id')->on('providers');
 
-            $table->integer('asm_group_id');
+            $table->integer('asm_group_id')->nullable();
 
             $table->string('sg_message_id');
 
-            $table->string('response', 100);
+            $table->string('response', 100)->nullable();
 
             $table->string('sg_event_id', 100);
 
-            $table->string('status', 10);
+            $table->string('status', 10)->nullable();
 
             $table->string('event', 50);
 
             $table->string('email', 50);
 
-            $table->string('smtp-id', 100);
+            $table->string('smtp-id', 100)->nullable();
 
-            $table->string('ip', 100);
+            $table->string('ip', 100)->nullable();
 
-            $table->boolean('tls');
+            $table->boolean('tls')->nullable();
 
-            $table->boolean('cert_err');
+            $table->boolean('cert_err')->nullable();
 
-            $table->string('useragent', 100);
+            $table->string('useragent', 255)->nullable();
 
-            $table->string('url', 100);
+            $table->string('url', 100)->nullable();
 
-            $table->string('reason');
+            $table->string('reason')->nullable();
 
-            $table->string('type', 50);
+            $table->string('type', 50)->nullable();
 
-            $table->integer('attempt');
+            $table->integer('attempt')->nullable();
 
-            $table->timestamp('send_at');
+            $table->timestamp('send_at')->nullable();
 
             $table->timestamps();
         });
