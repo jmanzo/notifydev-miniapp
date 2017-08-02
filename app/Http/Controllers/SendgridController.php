@@ -14,31 +14,25 @@ class SendgridController extends Controller
 
     public function notifications (Request $request)
     {
-    	$data = $request->all();
-    	$this->createEvent($data);
-    	return response()->json($data);
+    	$events = $request->all();
+
+        foreach ( $events as $data ) {
+            $this->createEvent ( $data );
+        }
+    	return response()->json($request->all());
     }
 
     private function createBounce ($data)
     {
     	$event = Event::create([
     		'provider_id' 	=> 1,
+            'email'         => $data['email'],
+            'smtp-id'       => $data['smtp-id'],
+            'event'         => $data['event'],
     		'status'		=> $data['status'],
     		'sg_event_id' 	=> $data['sg_event_id'],
     		'sg_message_id' => $data['sg_message_id'],
-    		'email' 		=> $data['email'],
-    		'event'			=> $data['event'],
-    		'asm_group_id'	=> $data['asm_group_id'],
     		'reason'		=> $data['reason'],
-    		'type'			=> $data['type'],
-    		'ip'			=> $data['ip'],
-    		'tls'			=> $data['tls'],
-    		'cert_err'		=> $data['cert_err']
-    	]);
-    	$argument = Argument::create([
-    		'event_id' 	=> $event->id,
-    		'field'		=> 'unique_arg_key',
-    		'value'		=> $data['unique_arg_key']
     	]);
     	$category = Category::create([
 	    	'event_id' 	=> $event->id,
@@ -50,19 +44,14 @@ class SendgridController extends Controller
     {
     	$event = Event::create([
     		'provider_id' 	=> 1,
+            'email'         => $data['email'],
+            'smtp-id'       => $data['smtp-id'],
+            'event'         => $data['event'],
     		'sg_event_id' 	=> $data['sg_event_id'],
     		'sg_message_id' => $data['sg_message_id'],
     		'useragent'		=> $data['useragent'],
-    		'email' 		=> $data['email'],
-    		'event'			=> $data['event'],
-    		'asm_group_id'	=> $data['asm_group_id'],
     		'ip'			=> $data['ip'],
     		'url'			=> $data['url']
-    	]);
-    	$argument = Argument::create([
-    		'event_id' 	=> $event->id,
-    		'field'		=> 'unique_arg_key',
-    		'value'		=> $data['unique_arg_key']
     	]);
     	$category = Category::create([
 	    	'event_id' 	=> $event->id,
@@ -73,23 +62,14 @@ class SendgridController extends Controller
     private function createDeferred ($data)
     {
     	$event = Event::create([
-    		'provider_id' 	=> 1,
-    		'response'		=> $data['response'],
-    		'sg_event_id' 	=> $data['sg_event_id'],
-    		'sg_message_id' => $data['sg_message_id'],
-    		'email' 		=> $data['email'],
-    		'event'			=> $data['event'],
-    		'smtp-id'		=> $data['smtp-id'],
-    		'attempt'		=> $data['attempt'],
-    		'asm_group_id'	=> $data['asm_group_id'],
-    		'ip'			=> $data['ip'],
-    		'tls'			=> $data['tls'],
-    		'cert_err'		=> $data['cert_err']
-    	]);
-    	$argument = Argument::create([
-    		'event_id' 	=> $event->id,
-    		'field'		=> 'unique_arg_key',
-    		'value'		=> $data['unique_arg_key']
+            'email'         => $data['email'],
+            'smtp-id'       => $data['smtp-id'],
+            'sg_event_id'   => $data['sg_event_id'],
+            'event'         => $data['event'],
+            'sg_message_id' => $data['sg_message_id'],
+            'response'      => $data['response'],
+            'attempt'       => $data['attempt'],
+    		'provider_id' 	=> 1
     	]);
     	$category = Category::create([
 	    	'event_id' 	=> $event->id,
@@ -101,21 +81,12 @@ class SendgridController extends Controller
     {
     	$event = Event::create([
     		'provider_id' 	=> 1,
+            'email'         => $data['email'],
+            'smtp-id'       => $data['smtp-id'],
+            'event'         => $data['event'],
     		'response'		=> $data['response'],
     		'sg_event_id' 	=> $data['sg_event_id'],
     		'sg_message_id' => $data['sg_message_id'],
-    		'email' 		=> $data['email'],
-    		'event'			=> $data['event'],
-    		'smtp-id'		=> $data['smtp-id'],
-    		'asm_group_id'	=> $data['asm_group_id'],
-    		'ip'			=> $data['ip'],
-    		'tls'			=> $data['tls'],
-    		'cert_err'		=> $data['cert_err']
-    	]);
-    	$argument = Argument::create([
-    		'event_id' 	=> $event->id,
-    		'field'		=> 'unique_arg_key',
-    		'value'		=> $data['unique_arg_key']
     	]);
     	$category = Category::create([
 	    	'event_id' 	=> $event->id,
@@ -127,17 +98,13 @@ class SendgridController extends Controller
     {
     	$event = Event::create([
     		'provider_id' 	=> 1,
+            'email'         => $data['email'],
+            'smtp-id'       => $data['smtp-id'],
+            'event'         => $data['event'],
     		'sg_event_id' 	=> $data['sg_event_id'],
     		'sg_message_id' => $data['sg_message_id'],
-    		'email' 		=> $data['email'],
-    		'event'			=> $data['event'],
-    		'smtp-id'		=> $data['smtp-id'],
-    		'reason'		=> $data['reason']
-    	]);
-    	$argument = Argument::create([
-    		'event_id' 	=> $event->id,
-    		'field'		=> 'unique_arg_key',
-    		'value'		=> $data['unique_arg_key']
+    		'reason'		=> $data['reason'],
+            'status'        => $data['status'],
     	]);
     	$category = Category::create([
 	    	'event_id' 	=> $event->id,
@@ -149,18 +116,13 @@ class SendgridController extends Controller
     {
     	$event = Event::create([
     		'provider_id' 	=> 1,
+            'email'         => $data['email'],
+            'smtp-id'       => $data['smtp-id'],
+            'event'         => $data['event'],
     		'sg_event_id' 	=> $data['sg_event_id'],
     		'sg_message_id' => $data['sg_message_id'],
-    		'email' 		=> $data['email'],
-    		'ip'			=> $data['ip'],
     		'useragent'		=> $data['useragent'],
-    		'event'			=> $data['event'],
-    		'smtp-id'		=> $data['smtp-id']
-    	]);
-    	$argument = Argument::create([
-    		'event_id' 	=> $event->id,
-    		'field'		=> 'unique_arg_key',
-    		'value'		=> $data['unique_arg_key']
+            'ip'            => $data['ip'],
     	]);
     	$category = Category::create([
 	    	'event_id' 	=> $event->id,
@@ -172,18 +134,11 @@ class SendgridController extends Controller
     {
     	$event = Event::create([
     		'provider_id' 	=> 1,
+            'email'         => $data['email'],
+            'smtp-id'       => $data['smtp-id'],
+            'event'         => $data['event'],
     		'sg_event_id' 	=> $data['sg_event_id'],
-    		'sg_message_id' => $data['sg_message_id'],
-    		'email' 		=> $data['email'],
-    		'useragent'		=> $data['useragent'],
-    		'event'			=> $data['event'],
-    		'smtp-id'		=> $data['smtp-id'],
-    		'asm_group_id'	=> $data['asm_group_id']
-    	]);
-    	$argument = Argument::create([
-    		'event_id' 	=> $event->id,
-    		'field'		=> 'unique_arg_key',
-    		'value'		=> $data['unique_arg_key']
+    		'sg_message_id' => $data['sg_message_id']
     	]);
     	$category = Category::create([
 	    	'event_id' 	=> $event->id,
@@ -195,16 +150,11 @@ class SendgridController extends Controller
     {
     	$event = Event::create([
     		'provider_id' 	=> 1,
+            'email'         => $data['email'],
+            'smtp-id'       => $data['smtp-id'],
+            'event'         => $data['event'],
     		'sg_event_id' 	=> $data['sg_event_id'],
     		'sg_message_id' => $data['sg_message_id'],
-    		'email' 		=> $data['email'],
-    		'event'			=> $data['event'],
-    		'asm_group_id'	=> $data['asm_group_id']
-    	]);
-    	$argument = Argument::create([
-    		'event_id' 	=> $event->id,
-    		'field'		=> 'unique_arg_key',
-    		'value'		=> $data['unique_arg_key']
     	]);
     	$category = Category::create([
 	    	'event_id' 	=> $event->id,
@@ -246,10 +196,6 @@ class SendgridController extends Controller
     		case 'spamreport':
     			$this->createSpamReport($data);
     			break;
-    		
-    		/*default:
-    			abort(500);
-    			break;*/
     	}
     }
 }
