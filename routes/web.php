@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/manifest.json', function () {
+	$public_path = public_path();
+	$url = $public_path.'/manifest.json';
+	return response()->file($url);
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
