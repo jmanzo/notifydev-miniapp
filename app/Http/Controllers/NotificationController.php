@@ -15,16 +15,16 @@ class NotificationController extends Controller
         return [OneSignalChannel::class];
     }
 
-    public function toOneSignal($notifiable)
+    public function sendMessage( $event ) 
     {
+        dd($event);
         return OneSignalMessage::create()
-            ->subject("Your {$notifiable->service} account was approved!")
+            ->subject( "Your email was" . $event->event )
             ->body("Click here to see details.")
-            ->url('http://onesignal.com')
             ->webButton(
                 OneSignalWebButton::create('link-1')
                     ->text('Click here')
-                    ->icon('https://upload.wikimedia.org/wikipedia/commons/4/4f/Laravel_logo.png')
+                    ->icon('http://via.placeholder.com/192x192')
                     ->url('http://laravel.com')
             );
     }

@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- OneSignal Scripts -->
-        <link rel="manifest" href="{{ asset('manifest.json') }}">
+        <link rel="manifest" href="https://ab1ee076.ngrok.io/miniapp/public/manifest.json">
         <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
         <script>
             var OneSignal = window.OneSignal || [];

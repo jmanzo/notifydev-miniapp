@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\NotificationController;
 use App\Argument;
 use App\Category;
 use App\Event;
@@ -18,6 +19,8 @@ class SendgridController extends Controller
 
         foreach ( $events as $data ) {
             $this->createEvent ( $data );
+            $notifiable = new NotificationController;
+            $notifiable->sendMessage($data);
         }
     	return response()->json($request->all());
     }
