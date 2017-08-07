@@ -10,10 +10,11 @@ use Illuminate\Notifications\Messages\MailMessage;
 use NotificationChannels\OneSignal\OneSignalChannel;
 use NotificationChannels\OneSignal\OneSignalMessage;
 use NotificationChannels\OneSignal\OneSignalWebButton;
-use Illuminate\Notifications\Notification;
 
 class SendMessage extends Notification
 {
+
+    //use Queueable;
     /**
      * Get the notification's delivery channels.
      *
@@ -34,7 +35,7 @@ class SendMessage extends Notification
     public function toOneSignal($notifiable)
     {
         return OneSignalMessage::create()
-            ->subject("Your {$notifiable->service} account was approved!")
+            ->subject("Your account was approved!")
             ->body("Click here to see details.")
             ->url('http://onesignal.com')
             ->webButton(
