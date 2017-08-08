@@ -13,6 +13,8 @@
 
 Route::get('/', 'HomeController@welcome');
 
+Route::get( '/test', 'SendgridController@testOnesignal' );
+
 Route::get('/manifest.json', function () {
 	$public_path = public_path();
 	$url = $public_path.'/manifest.json';
@@ -21,4 +23,4 @@ Route::get('/manifest.json', function () {
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');

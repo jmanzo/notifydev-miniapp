@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\NotificationController;
-use App\Notifications\SendMessage;
 use App\Argument;
 use App\Category;
 use App\Event;
@@ -13,6 +12,11 @@ use App\Provider;
 
 class SendgridController extends Controller
 {
+    public function testOnesignal ()
+    {
+        \OneSignal::sendNotificationToAll("Some Message", $url = null, $data = null, $buttons = null, $schedule = null);
+        return redirect( '/' );
+    }
 
     public function notifications (Request $request)
     {
@@ -20,8 +24,7 @@ class SendgridController extends Controller
 
         foreach ( $events as $data ) {
             $this->createEvent ( $data );
-            $notifiable = new SendMessage;
-            $notifiable->toOneSignal($data);
+            \OneSignal::sendNotificationToAll($data, $url = null, $data = null, $buttons = null, $schedule = null);
         }
     	return response()->json($request->all());
     }

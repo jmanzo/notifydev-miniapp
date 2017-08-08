@@ -17,7 +17,6 @@ class NotificationController extends Controller
 
     public function sendMessage( $event ) 
     {
-        dd($event);
         return OneSignalMessage::create()
             ->subject( "Your email was" . $event->event )
             ->body("Click here to see details.")
