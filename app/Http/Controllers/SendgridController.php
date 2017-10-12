@@ -35,6 +35,7 @@ class SendgridController extends Controller
             $category       = isset($data['category']) ? $data['category'] : null;
             $attempt        = isset($data['attempt']) ? $data['attempt'] : null;
             $sent_at        = isset($data['sent_at']) ? $data['sent_at'] : null;
+            $notification   = 'The user '.$email.' has '.$data_event.' your message '.$sg_message_id;
 
             $flight = Event::updateOrCreate([
                     'smtp-id' => $data['smtp-id'], 
@@ -59,8 +60,9 @@ class SendgridController extends Controller
                     'sent_at'       => $sent_at,
                 ]
             );
+            
             \OneSignal::sendNotificationToAll(
-                $data['event'],
+                $notification,
                 $url = null,
                 $data = null, 
                 $buttons = null, 
