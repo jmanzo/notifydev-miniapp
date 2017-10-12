@@ -14,7 +14,7 @@ class SendgridController extends Controller
 {
     public function testOnesignal ()
     {
-        \OneSignal::sendNotificationToAll("Some Message", $url = null, $data = null, $buttons = null, $schedule = null);
+        \OneSignal::sendNotificationToAll("EventMessage", $url = null, $data = null, $buttons = null, $schedule = null);
         return redirect( '/' );
     }
 
@@ -24,7 +24,13 @@ class SendgridController extends Controller
 
         foreach ( $events as $data ) {
             $this->saveEvent( $data );
-            //\OneSignal::sendNotificationToAll($data, $url = null, $data = null, $buttons = null, $schedule = null);
+            \OneSignal::sendNotificationToAll(
+                $data['event'],
+                $url = null,
+                $data = null, 
+                $buttons = null, 
+                $schedule = null
+            );
         }
     	return response()->json($events);
     }
