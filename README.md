@@ -1,29 +1,24 @@
-# README #
+# NOTIFICATION DEV MINIAPP #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+This README will show you the necessary steps to get your application up and running.
 
-### What is this repository for? ###
+### SENDGRID ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+Begin to use this app, setting your credentials in The Sendgrid App following the instruction for to get them.
+* https://sendgrid.com/docs/API_Reference/Webhooks/event.html
 
-### How do I get set up? ###
+### ONESIGNAL ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+You need set up your credentials to app since OneSignal.
+* https://documentation.onesignal.com/docs/onesignal-api
+* https://documentation.onesignal.com/reference#create-notification
+* https://documentation.onesignal.com/reference#view-devices
 
-### Contribution guidelines ###
+### This project doesn't have need for contributing ###
 
-* Writing tests
-* Code review
-* Other guidelines
+This project is only for demostrate purpose, no need to contribute yet. If you would like contribute with it, you can send me an email to jmanzosistemas@gmail.com and I will grateful in review your check.
 
 ### Who do I talk to? ###
 
-* Repo owner or admin
-* Other community or team contact
+* My name is Jean Manzo, and I am a web developer
+* TigerMediaGroup Company and its partners
