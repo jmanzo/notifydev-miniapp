@@ -8,7 +8,7 @@ return array(
 	|
 	|
 	*/
-    'app_id' => 'e1cc513e-6a24-4936-b260-5741ade6f266',
+    'app_id' => env('ONESIGNAL_APP_ID'),
 
     /*
 	|--------------------------------------------------------------------------
@@ -18,6 +18,6 @@ return array(
     |
 	|
 	*/
-    'rest_api_key' => 'NDgyNDA3ZWEtN2RkOS00YTkzLTkwMWUtZWVlNzU3OTI4OWQ4',
-    'user_auth_key' => 'ZTg5Y2MwYmYtZGU5YS00NWUyLTkwYzEtMTQ4Y2QxYTlhM2My',
+    'rest_api_key' => env('ONESIGNAL_REST_API_KEY'),
+    'user_auth_key' => env('ONESIGNAL_AUTH_KEY'),
 );
