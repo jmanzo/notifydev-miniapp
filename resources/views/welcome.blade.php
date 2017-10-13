@@ -1,10 +1,8 @@
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
     <head>
-        <!-- OneSignal Scripts -->
-        <link rel="manifest" href="https://5cf5c268.ngrok.io/manifest.json">
-        <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
-        <script src="{{ asset('js/onesignal.js') }}"></script>
+        <!--<link rel="manifest" href="https://5cf5c268.ngrok.io/manifest.json">-->
+        
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,7 +21,6 @@
                         <a href="{{ url('/home') }}">Home</a>
                     @else
                         <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
                     @endif
                 </div>
             @endif
