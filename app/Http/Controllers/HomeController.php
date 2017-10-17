@@ -21,7 +21,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index ()
     {
         return view('home');
     }
@@ -30,5 +30,9 @@ class HomeController extends Controller
     {
         $test = new NotificationController;
         return view('welcome');
+    }
+
+    public function apps () {
+        return view('apps');
     }
 }
