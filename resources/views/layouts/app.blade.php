@@ -3,8 +3,6 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('material/img/apple-icon.png') }}" />
-    <link rel="icon" type="image/png" href="{{ asset('material/img/favicon.png')}}" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -38,7 +36,7 @@
                 Tip 2: you can also add an image using data-image tag
             -->
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
+                <a href="{{ url('/home') }}" class="simple-text">
                     Notifications App
                 </a>
             </div>
@@ -51,7 +49,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="./user.html">
+                        <a href="{{ url('/apps') }}">
                             <i class="material-icons">person</i>
                             <p>Users</p>
                         </a>
@@ -88,12 +86,6 @@
                                 <ul class="dropdown-menu">
                                     <!-- Insert list for notifications -->
                                 </ul>
-                            </li>
-                            <li>
-                                <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="material-icons">person</i>
-                                    <p class="hidden-lg hidden-md">Profile</p>
-                                </a>
                             </li>
                             <li>
                                 <a href="{{ route('logout') }}"
