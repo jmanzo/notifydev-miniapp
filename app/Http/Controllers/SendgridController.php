@@ -38,7 +38,6 @@ class SendgridController extends Controller
             $notification   = 'The user '.$email.' has '.$data_event.' your message '.$sg_message_id;
 
             $flight = Event::updateOrCreate([
-                    'smtp-id' => $data['smtp-id'], 
                     'sg_event_id' => $data['sg_event_id'],
                     'sg_message_id' => $data['sg_message_id']
                 ], [
