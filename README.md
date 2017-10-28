@@ -14,9 +14,9 @@ You need set up your credentials to app since OneSignal.
 * https://documentation.onesignal.com/reference#create-notification
 * https://documentation.onesignal.com/reference#view-devices
 
-### This project doesn't have need for contributing ###
+### You can contribute with Project when you want. ###
 
-This project is only for demostrate purpose, no need to contribute yet. If you would like contribute with it, you can send me an email to jmanzosistemas@gmail.com and I will grateful in review your check.
+This project is for demostrate purpose. If you would like contribute with it, you can send me an email to jmanzosistemas@gmail.com or making a fork for this repo. I will grateful in review your check.
 
 ### Who do I talk to? ###
 
