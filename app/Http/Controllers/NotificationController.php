@@ -10,21 +10,12 @@ use Illuminate\Notifications\Notification;
 
 class NotificationController extends Controller
 {
-    public function via($notifiable)
-    {
-        return [OneSignalChannel::class];
-    }
-
-    public function sendMessage( $event ) 
-    {
-        return OneSignalMessage::create()
-            ->subject( "Your email was" . $event->event )
-            ->body("Click here to see details.")
-            ->webButton(
-                OneSignalWebButton::create('link-1')
-                    ->text('Click here')
-                    ->icon('http://via.placeholder.com/192x192')
-                    ->url('http://laravel.com')
-            );
+    public function sendMessage( $content ) {
+        $params = [
+            'included_segments' => ['Active Users'],
+            'excluded_segments' => ['Inactive Users'],
+            'contents' => $content,
+        ];
+        \OneSignal::sendNotificationCustom( $params );
     }
 }
